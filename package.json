@@ -1,0 +1,49 @@
+{
+  "name": "@solid/object",
+  "version": "0.1.0",
+  "description": "RDF mapping classes for Solid",
+  "main": "dist/mod.js",
+  "type": "module",
+  "types": "./dist/mod.d.ts",
+  "exports": {
+    ".": "./dist/mod.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solid/object.git"
+  },
+  "scripts": {
+    "start": "npm test",
+    "test": "tsc && tsc -p test && node --test \"**/*.test.js\""
+  },
+  "keywords": [
+    "solid",
+    "wrapping-classes",
+    "rdf",
+    "object-oriented",
+    "rdfjs",
+    "mapping",
+    "wrapper"
+  ],
+  "contributors": [
+    "Matthieu Bosquet (https://github.com/matthieubosquet)",
+    "Samu Lang (https://github.com/langsamu)"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "rdfjs-wrapper": "^0.15.0"
+  },
+  "devDependencies": {
+    "@rdfjs/types": "^2",
+    "@types/n3": "^1",
+    "@types/node": "^24",
+    "n3": "^1",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
