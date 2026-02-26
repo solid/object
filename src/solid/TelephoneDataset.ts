@@ -3,7 +3,12 @@ import { VCARD } from '../vocabulary/vcard.js';
 import { Telephone } from './Telephone.js';
 
 export class TelephoneDataset extends DatasetWrapper {
-  get telephone(): Iterable<Telephone> {
-    return this.objectsOf(VCARD.hasTelephone, Telephone);
+  get telephones(): Iterable<Telephone> {
+    const objects = new Set([
+                ...this.objectsOf(VCARD.hasTelephone, Telephone),
+                ...this.objectsOf(VCARD.tel, Telephone),
+            ])
+
+    return objects
   }
 }
