@@ -3,7 +3,7 @@ import { VCARD } from '../vocabulary/mod.js';
 
 export class Telephone extends TermWrapper {
   get phoneNumber(): string {
-    return this.singular(VCARD.hasValue, ValueMappings.literalToString) || '';
+    return this.singular(VCARD.hasValue, ValueMappings.literalToString);
   }
 
   set phoneNumber(value: string) {
