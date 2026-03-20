@@ -1,96 +1,38 @@
-import { TermMappings, ValueMappings, TermWrapper } from "rdfjs-wrapper"
-import { DC, POSIX, RDF, RDFS } from "../vocabulary/mod.js"
-
-// TODO: review implementation of this
-export type FileType = "folder" | "file" | "image" | "document" | "other";
+import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
 
 export class Resource extends TermWrapper {
-    #ianaMediaTypePattern = /^http:\/\/www\.w3\.org\/ns\/iana\/media-types\/(.+)#Resource$/;
 
-    get id(): string {
-        return this.term.value
-    }
-
-    get isContainer(): boolean {
-        return this.id.endsWith("/")
-    }
-
-    get fileType(): FileType {
-        return this.isContainer ? "folder" : "file"
-    }
-
-    get title(): string | undefined {
-        return this.singularNullable(DC.title, ValueMappings.literalToString)
-    }
-
-    get label(): string | undefined {
-        return this.singularNullable(RDFS.label, ValueMappings.literalToString)
-    }
-
-    get name(): string {
-        return this.title ?? this.label ?? this.extractNameFromUrl(this.id)
-    }
-
-    get modified(): Date | undefined {
-        return this.singularNullable(DC.modified, ValueMappings.literalToDate)
-    }
-
-    get mtime(): Date | undefined {
-        return this.singularNullable(POSIX.mtime, ValueMappings.literalToDate)
-    }
-
-    get lastModified(): Date | undefined {
-        return this.modified ?? this.mtime
-    }
-
-    get size(): number | undefined {
-        return this.singularNullable(POSIX.size, ValueMappings.literalToNumber)
-    }
-
-    get type(): Set<string> {
-        return this.objects(RDF.type, ValueMappings.iriToString, TermMappings.stringToIri)
-    }
-
-    get mimeType(): string | undefined {
-        const matches = [...this.type]
-            .map(t => this.#ianaMediaTypePattern.exec(t))
-            .filter(results => results !== null)
-            .map(results => results[0])
-
-        for (const match of matches) {
-            return match
-        }
-
-        return;
-    }
-
-    override toString() {
-        return this.id
-    }
-
-    // TODO: review implementation of this
-    private extractNameFromUrl(url: string): string {
-        try {
-            const urlObj = new URL(url);
-            const pathParts = urlObj.pathname.split("/").filter(Boolean);
-            let name = pathParts[pathParts.length - 1] || urlObj.hostname;
-
-            try {
-            name = decodeURIComponent(name);
-            } catch (e) {
-            // Keep original name if decoding fails
-            }
-
-            return name;
-        } catch (e) {
-            // If URL parsing fails, try to extract from the string directly
-            const parts = url.split("/").filter(Boolean);
-            const lastPart = parts[parts.length - 1] || url;
-            try {
-            return decodeURIComponent(lastPart);
-            } catch {
-            return lastPart;
-            }
-        }
-    }
+  get title(): string | undefined {
+    return this.singularNullable("http://purl.org/dc/elements/1.1/title", ValueMapping.literalToString);
+  }
+  set title(value: string) {
+    this.overwriteNullable("http://purl.org/dc/elements/1.1/title", value, TermMapping.stringToLiteral);
+  }
+  get label(): string | undefined {
+    return this.singularNullable("http://www.w3.org/2000/01/rdf-schema#label", ValueMapping.literalToString);
+  }
+  set label(value: string) {
+    this.overwriteNullable("http://www.w3.org/2000/01/rdf-schema#label", value, TermMapping.stringToLiteral);
+  }
+  get modified(): Date | undefined {
+    return this.singularNullable("http://purl.org/dc/elements/1.1/modified", ValueMapping.literalToDate);
+  }
+  set modified(value: Date) {
+    this.overwriteNullable("http://purl.org/dc/elements/1.1/modified", value, TermMapping.dateToLiteral);
+  }
+  get mtime(): Date | undefined {
+    return this.singularNullable("http://www.w3.org/ns/posix/stat#mtime", ValueMapping.literalToDate);
+  }
+  set mtime(value: Date) {
+    this.overwriteNullable("http://www.w3.org/ns/posix/stat#mtime", value, TermMapping.dateToLiteral);
+  }
+  get size(): number | undefined {
+    return this.singularNullable("http://www.w3.org/ns/posix/stat#size", ValueMapping.literalToNumber);
+  }
+  set size(value: number) {
+    this.overwriteNullable("http://www.w3.org/ns/posix/stat#size", value, TermMapping.numberToLiteral);
+  }
+  get type(): Set<string> {
+    return this.objects("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", ValueMapping.literalToString, TermMapping.stringToLiteral);
+  }
 }
