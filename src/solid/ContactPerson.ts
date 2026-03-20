@@ -1,11 +1,11 @@
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping } from "rdfjs-wrapper";
 
 export class ContactPerson extends TermWrapper {
 
   get Individual(): string | undefined {
     return this.singularNullable("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", ValueMapping.literalToString);
   }
-  set Individual(value: string) {
+  set Individual(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", value, TermMapping.stringToLiteral);
   }
   get fullName(): Set<string> {
@@ -20,7 +20,7 @@ export class ContactPerson extends TermWrapper {
   get name(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#hasName", ValueMapping.literalToString);
   }
-  set name(value: string) {
+  set name(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#hasName", value, TermMapping.stringToLiteral);
   }
   get photo(): Set<string> {
@@ -38,7 +38,7 @@ export class ContactPerson extends TermWrapper {
   get dateOfBirth(): Date | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#bday", ValueMapping.literalToDate);
   }
-  set dateOfBirth(value: Date) {
+  set dateOfBirth(value: Date | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#bday", value, TermMapping.dateToLiteral);
   }
   get email(): Set<string> {
@@ -50,25 +50,25 @@ export class ContactPerson extends TermWrapper {
   get organizationName(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#organization-name", ValueMapping.literalToString);
   }
-  set organizationName(value: string) {
+  set organizationName(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#organization-name", value, TermMapping.stringToLiteral);
   }
   get role(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#role", ValueMapping.literalToString);
   }
-  set role(value: string) {
+  set role(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#role", value, TermMapping.stringToLiteral);
   }
   get title(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#title", ValueMapping.literalToString);
   }
-  set title(value: string) {
+  set title(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#title", value, TermMapping.stringToLiteral);
   }
   get notes(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#note", ValueMapping.literalToString);
   }
-  set notes(value: string) {
+  set notes(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#note", value, TermMapping.stringToLiteral);
   }
   get sameAs(): Set<string> {

@@ -1,5 +1,5 @@
-import { AccessControlPolicy } from './AccessControlPolicy';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { AccessControlPolicy } from './AccessControlPolicy.js';
+import { TermWrapper, ObjectMapping } from "rdfjs-wrapper";
 
 export class AcpAccessControl extends TermWrapper {
 

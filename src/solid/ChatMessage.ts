@@ -1,4 +1,4 @@
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping } from "rdfjs-wrapper";
 
 export class ChatMessage extends TermWrapper {
 

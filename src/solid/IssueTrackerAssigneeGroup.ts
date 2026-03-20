@@ -1,12 +1,12 @@
-import { IssueTrackerPerson } from './IssueTrackerPerson';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { IssueTrackerPerson } from './IssueTrackerPerson.js';
+import { TermWrapper, ValueMapping, TermMapping, ObjectMapping } from "rdfjs-wrapper";
 
 export class IssueTrackerAssigneeGroup extends TermWrapper {
 
   get name(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#fn", ValueMapping.literalToString);
   }
-  set name(value: string) {
+  set name(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#fn", value, TermMapping.stringToLiteral);
   }
   get member(): Set<IssueTrackerPerson> {

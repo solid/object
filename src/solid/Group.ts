@@ -1,5 +1,5 @@
-import { ContactDetailsPerson } from './ContactDetailsPerson';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { ContactDetailsPerson } from './ContactDetailsPerson.js';
+import { TermWrapper, ValueMapping, TermMapping, ObjectMapping } from "rdfjs-wrapper";
 
 export class Group extends TermWrapper {
 

@@ -1,11 +1,11 @@
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping } from "rdfjs-wrapper";
 
 export class ContactOrganization extends TermWrapper {
 
   get name(): string | undefined {
     return this.singularNullable("http://schema.org/name", ValueMapping.literalToString);
   }
-  set name(value: string) {
+  set name(value: string | undefined) {
     this.overwriteNullable("http://schema.org/name", value, TermMapping.stringToLiteral);
   }
   get homepageURL(): Set<string> {

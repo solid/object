@@ -1,6 +1,6 @@
-import { ChatSharedPreferences } from './ChatSharedPreferences';
-import { Participation } from './Participation';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { ChatSharedPreferences } from './ChatSharedPreferences.js';
+import { Participation } from './Participation.js';
+import { TermWrapper, ValueMapping, TermMapping, ObjectMapping } from "rdfjs-wrapper";
 
 export class ChatChannel extends TermWrapper {
 

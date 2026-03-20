@@ -1,71 +1,71 @@
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping } from "rdfjs-wrapper";
 
 export class WebIdAgent extends TermWrapper {
 
   get vcardFn(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#fn", ValueMapping.literalToString);
   }
-  set vcardFn(value: string) {
+  set vcardFn(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#fn", value, TermMapping.stringToLiteral);
   }
   get vcardHasUrl(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#hasUrl", ValueMapping.literalToString);
   }
-  set vcardHasUrl(value: string) {
+  set vcardHasUrl(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#hasUrl", value, TermMapping.stringToLiteral);
   }
   get organization(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#organizationName", ValueMapping.literalToString);
   }
-  set organization(value: string) {
+  set organization(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#organizationName", value, TermMapping.stringToLiteral);
   }
   get role(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#role", ValueMapping.literalToString);
   }
-  set role(value: string) {
+  set role(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#role", value, TermMapping.stringToLiteral);
   }
   get title(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#title", ValueMapping.literalToString);
   }
-  set title(value: string) {
+  set title(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#title", value, TermMapping.stringToLiteral);
   }
   get hasTelephone(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#hasTelephone", ValueMapping.literalToString);
   }
-  set hasTelephone(value: string) {
+  set hasTelephone(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#hasTelephone", value, TermMapping.stringToLiteral);
   }
   get foafName(): string | undefined {
     return this.singularNullable("http://xmlns.com/foaf/0.1/name", ValueMapping.literalToString);
   }
-  set foafName(value: string) {
+  set foafName(value: string | undefined) {
     this.overwriteNullable("http://xmlns.com/foaf/0.1/name", value, TermMapping.stringToLiteral);
   }
   get name(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#hasName", ValueMapping.literalToString);
   }
-  set name(value: string) {
+  set name(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#hasName", value, TermMapping.stringToLiteral);
   }
   get foafHomepage(): string | undefined {
     return this.singularNullable("http://xmlns.com/foaf/0.1/homepage", ValueMapping.literalToString);
   }
-  set foafHomepage(value: string) {
+  set foafHomepage(value: string | undefined) {
     this.overwriteNullable("http://xmlns.com/foaf/0.1/homepage", value, TermMapping.stringToLiteral);
   }
   get photoUrl(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#hasPhoto", ValueMapping.literalToString);
   }
-  set photoUrl(value: string) {
+  set photoUrl(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#hasPhoto", value, TermMapping.stringToLiteral);
   }
   get hasEmail(): string | undefined {
     return this.singularNullable("http://www.w3.org/2006/vcard/ns#hasEmail", ValueMapping.literalToString);
   }
-  set hasEmail(value: string) {
+  set hasEmail(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2006/vcard/ns#hasEmail", value, TermMapping.stringToLiteral);
   }
   get inAddressBook(): string {

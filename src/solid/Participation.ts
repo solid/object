@@ -1,4 +1,4 @@
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping } from "rdfjs-wrapper";
 
 export class Participation extends TermWrapper {
 
@@ -17,31 +17,31 @@ export class Participation extends TermWrapper {
   get colorizeByAuthor(): boolean | undefined {
     return this.singularNullable("http://www.w3.org/ns/solid/terms#colorizeByAuthor", ValueMapping.literalToString);
   }
-  set colorizeByAuthor(value: boolean) {
+  set colorizeByAuthor(value: boolean | undefined) {
     this.overwriteNullable("http://www.w3.org/ns/solid/terms#colorizeByAuthor", value, TermMapping.stringToLiteral);
   }
   get expandImagesInline(): boolean | undefined {
     return this.singularNullable("http://www.w3.org/ns/solid/terms#expandImagesInline", ValueMapping.literalToString);
   }
-  set expandImagesInline(value: boolean) {
+  set expandImagesInline(value: boolean | undefined) {
     this.overwriteNullable("http://www.w3.org/ns/solid/terms#expandImagesInline", value, TermMapping.stringToLiteral);
   }
   get inlineImageHeight(): number | undefined {
     return this.singularNullable("http://www.w3.org/ns/solid/terms#inlineImageHeightEms", ValueMapping.literalToNumber);
   }
-  set inlineImageHeight(value: number) {
+  set inlineImageHeight(value: number | undefined) {
     this.overwriteNullable("http://www.w3.org/ns/solid/terms#inlineImageHeightEms", value, TermMapping.numberToLiteral);
   }
   get newestFirst(): boolean | undefined {
     return this.singularNullable("http://www.w3.org/ns/solid/terms#newestFirst", ValueMapping.literalToString);
   }
-  set newestFirst(value: boolean) {
+  set newestFirst(value: boolean | undefined) {
     this.overwriteNullable("http://www.w3.org/ns/solid/terms#newestFirst", value, TermMapping.stringToLiteral);
   }
   get backgroundColor(): string | undefined {
     return this.singularNullable("http://www.w3.org/ns/ui#backgroundColor", ValueMapping.literalToString);
   }
-  set backgroundColor(value: string) {
+  set backgroundColor(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/ns/ui#backgroundColor", value, TermMapping.stringToLiteral);
   }
 }

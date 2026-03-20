@@ -1,7 +1,7 @@
-import { Address } from './Address';
-import { EmailWithType } from './EmailWithType';
-import { Telephone } from './Telephone';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { Address } from './Address.js';
+import { EmailWithType } from './EmailWithType.js';
+import { Telephone } from './Telephone.js';
+import { TermWrapper, ValueMapping, TermMapping, ObjectMapping } from "rdfjs-wrapper";
 
 export class ContactDetailsOrganization extends TermWrapper {
 

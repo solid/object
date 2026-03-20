@@ -1,4 +1,4 @@
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping } from "rdfjs-wrapper";
 
 export class ScheduleEvent extends TermWrapper {
 
@@ -11,7 +11,7 @@ export class ScheduleEvent extends TermWrapper {
   get isAllDayEvent(): boolean | undefined {
     return this.singularNullable("http://www.w3.org/ns/pim/schedule#allDay", ValueMapping.literalToString);
   }
-  set isAllDayEvent(value: boolean) {
+  set isAllDayEvent(value: boolean | undefined) {
     this.overwriteNullable("http://www.w3.org/ns/pim/schedule#allDay", value, TermMapping.stringToLiteral);
   }
   get durationDays(): Set<number> {

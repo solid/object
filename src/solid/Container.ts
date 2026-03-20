@@ -1,5 +1,5 @@
-import { Resource } from './Resource';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { Resource } from './Resource.js';
+import { TermWrapper, ObjectMapping } from "rdfjs-wrapper";
 
 export class Container extends TermWrapper {
 

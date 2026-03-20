@@ -1,6 +1,6 @@
-import { VCardPersonalName } from './VCardPersonalName';
-import { VCardAddress } from './VCardAddress';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping, ObjectMapping } from "rdfjs-wrapper";
+import { VCardAddress } from './VCardAddress.js';
+import { VCardPersonalName } from './VCardPersonalName.js';
 
 export class VCard extends TermWrapper {
 

@@ -1,19 +1,19 @@
-import { PropertyListItem } from './PropertyListItem';
-import { IssueTrackerAssigneeGroup } from './IssueTrackerAssigneeGroup';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { IssueTrackerAssigneeGroup } from './IssueTrackerAssigneeGroup.js';
+import { PropertyListItem } from './PropertyListItem.js';
+import { TermWrapper, ValueMapping, TermMapping, ObjectMapping } from "rdfjs-wrapper";
 
 export class IssueTracker extends TermWrapper {
 
   get title(): string | undefined {
     return this.singularNullable("http://purl.org/dc/terms/title", ValueMapping.literalToString);
   }
-  set title(value: string) {
+  set title(value: string | undefined) {
     this.overwriteNullable("http://purl.org/dc/terms/title", value, TermMapping.stringToLiteral);
   }
   get description(): string | undefined {
     return this.singularNullable("http://www.w3.org/2005/01/wf/flow#description", ValueMapping.literalToString);
   }
-  set description(value: string) {
+  set description(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/2005/01/wf/flow#description", value, TermMapping.stringToLiteral);
   }
   get issueState(): Set<string> {
@@ -25,7 +25,7 @@ export class IssueTracker extends TermWrapper {
   get allowSubIssues(): boolean | undefined {
     return this.singularNullable("http://www.w3.org/2005/01/wf/flow#allowSubIssues", ValueMapping.literalToString);
   }
-  set allowSubIssues(value: boolean) {
+  set allowSubIssues(value: boolean | undefined) {
     this.overwriteNullable("http://www.w3.org/2005/01/wf/flow#allowSubIssues", value, TermMapping.stringToLiteral);
   }
   get additionalProperties(): Set<PropertyListItem> {

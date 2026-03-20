@@ -1,5 +1,5 @@
-import { AcpAccessControl } from './AcpAccessControl';
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { AcpAccessControl } from './AcpAccessControl.js';
+import { TermWrapper, ValueMapping, TermMapping, ObjectMapping } from "rdfjs-wrapper";
 
 export class AccessControlResource extends TermWrapper {
 
@@ -9,7 +9,7 @@ export class AccessControlResource extends TermWrapper {
   get resource(): string | undefined {
     return this.singularNullable("http://www.w3.org/ns/solid/acp#resource", ValueMapping.iriToString);
   }
-  set resource(value: string) {
+  set resource(value: string | undefined) {
     this.overwriteNullable("http://www.w3.org/ns/solid/acp#resource", value, TermMapping.stringToIri);
   }
 }

@@ -1,4 +1,4 @@
-import { ValueMapping, TermMapping, TermWrapper, ObjectMapping } from "rdfjs-wrapper";
+import { TermWrapper, ValueMapping, TermMapping } from "rdfjs-wrapper";
 
 export class ChatAction extends TermWrapper {
 
@@ -8,7 +8,7 @@ export class ChatAction extends TermWrapper {
   get agent(): string | undefined {
     return this.singularNullable("https://schema.org/agent", ValueMapping.literalToString);
   }
-  set agent(value: string) {
+  set agent(value: string | undefined) {
     this.overwriteNullable("https://schema.org/agent", value, TermMapping.stringToLiteral);
   }
 }
