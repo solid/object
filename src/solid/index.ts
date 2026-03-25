@@ -1,40 +1,44 @@
-export * from "./AccessControlResource"; // AccessControlResource
-export * from "./AcpAccessControl"; // AcpAccessControl
-export * from "./AcpMatcher"; // AcpMatcher
-export * from "./AccessControlPolicy"; // AccessControlPolicy
-export * from "./AccessControlPolicy"; // AccessControlPolicy
-export * from "./AddressBook"; // AddressBook
-export * from "./Address"; // Address
-export * from "./Agent"; // Agent
-export * from "./WebIdAgent"; // WebIdAgent
-export * from "./Bookmark"; // Bookmark
-export * from "./ChatChannel"; // ChatChannel
-export * from "./ChatSharedPreferences"; // ChatSharedPreferences
-export * from "./Participation"; // Participation
-export * from "./ChatMessage"; // ChatMessage
-export * from "./ChatAction"; // ChatAction
-export * from "./Container"; // Container
-export * from "./Email"; // Email
-export * from "./EmailWithType"; // EmailWithType
-export * from "./ScheduleEvent"; // ScheduleEvent
-export * from "./Group"; // Group
-export * from "./GroupMemberLocalId"; // GroupMemberLocalId
-export * from "./IssueTrackerAssigneeGroup"; // IssueTrackerAssigneeGroup
-export * from "./IssueTracker"; // IssueTracker
-export * from "./PropertyListItem"; // PropertyListItem
-export * from "./Meeting"; // Meeting
-export * from "./ContactOrganization"; // ContactOrganization
-export * from "./ContactDetailsOrganization"; // ContactDetailsOrganization
-export * from "./ContactDetailsPerson"; // ContactDetailsPerson
-export * from "./IssueTrackerPerson"; // IssueTrackerPerson
-export * from "./ContactPerson"; // ContactPerson
-export * from "./PersonalName"; // PersonalName
-export * from "./Resource"; // Resource
-export * from "./ScheduleEventSoftwareAgent"; // ScheduleEventSoftwareAgent
-export * from "./TelephoneAsIRI"; // TelephoneAsIRI
-export * from "./Telephone"; // Telephone
-export * from "./VCard"; // VCard
-export * from "./VCardPersonalName"; // VCardPersonalName
-export * from "./VCardAddress"; // VCardAddress
-export * from "./WebId"; // WebId
-export * from "./WebPage"; // WebPage
+export * from "./AccessControlResource";
+export * from "./AcpAccessControl";
+export * from "./AcpMatcher";
+export * from "./AccessControlPolicy";
+export * from "./AccessControlPolicy";
+export * from "./AddressBook";
+export * from "./Address";
+export * from "./WebIdAgent";
+export * from "./Bookmark";
+export * from "./ChatChannel";
+export * from "./ChatSharedPreferences";
+export * from "./Participation";
+export * from "./ChatMessage";
+export * from "./ChatAction";
+export * from "./Container";
+export * from "./Email";
+export * from "./EmailWithType";
+export * from "./ScheduleEvent";
+export * from "./Group";
+export * from "./GroupMemberLocalId";
+export * from "./IssueTrackerAssigneeGroup";
+export * from "./IssueTracker";
+export * from "./PropertyListItem";
+export * from "./Meeting";
+export * from "./ContactOrganization";
+export * from "./ContactDetailsOrganization";
+export * from "./ContactDetailsPerson";
+export * from "./IssueTrackerPerson";
+export * from "./ContactPerson";
+export * from "./PersonalName";
+export * from "./Resource";
+export * from "./TelephoneAsIRI";
+export * from "./Telephone";
+export * from "./VCard";
+export * from "./VCardPersonalName";
+export * from "./VCardAddress";
+export * from "./VolunteerActivity";
+export * from "./VolunteerRole";
+export * from "./VolunteerTime";
+export * from "./VolunteerLocation";
+export * from "./VolunteerSession";
+export * from "./VolunteerOrganisation";
+export * from "./WebId";
+export * from "./WebPage";
