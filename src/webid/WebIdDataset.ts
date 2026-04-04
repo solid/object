@@ -1,4 +1,4 @@
-import { DatasetWrapper } from "rdfjs-wrapper"
+import { DatasetWrapper } from "@rdfjs/wrapper"
 import { Agent } from "../webid/Agent.js"
 import { SOLID } from "../vocabulary/mod.js"
 

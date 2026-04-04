@@ -24,7 +24,7 @@ describe("Example suite", async () => {
         store.addQuads(new Parser().parse(rdf));
         const webid = new WebIdDataset(store, DataFactory)
 
-        assert.equal("https://id.inrupt.com/matthieuodi", webid.mainSubject?.term.value)
+        assert.equal("https://id.inrupt.com/matthieuodi", webid.mainSubject?.value)
         assert.equal("Matthieu Odi", webid.mainSubject?.name)
     })
 })

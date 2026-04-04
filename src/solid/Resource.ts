@@ -1,4 +1,4 @@
-import { TermMappings, ValueMappings, TermWrapper } from "rdfjs-wrapper"
+import { TermWrapper, LiteralAs, NamedNodeAs, NamedNodeFrom } from "@rdfjs/wrapper"
 import { DC, POSIX, RDF, RDFS } from "../vocabulary/mod.js"
 
 // TODO: review implementation of this
@@ -8,7 +8,7 @@ export class Resource extends TermWrapper {
     #ianaMediaTypePattern = /^http:\/\/www\.w3\.org\/ns\/iana\/media-types\/(.+)#Resource$/;
 
     get id(): string {
-        return this.term.value
+        return this.value
     }
 
     get isContainer(): boolean {
@@ -20,11 +20,11 @@ export class Resource extends TermWrapper {
     }
 
     get title(): string | undefined {
-        return this.singularNullable(DC.title, ValueMappings.literalToString)
+        return this.singularNullable(DC.title, LiteralAs.string)
     }
 
     get label(): string | undefined {
-        return this.singularNullable(RDFS.label, ValueMappings.literalToString)
+        return this.singularNullable(RDFS.label, LiteralAs.string)
     }
 
     get name(): string {
@@ -32,11 +32,11 @@ export class Resource extends TermWrapper {
     }
 
     get modified(): Date | undefined {
-        return this.singularNullable(DC.modified, ValueMappings.literalToDate)
+        return this.singularNullable(DC.modified, LiteralAs.date)
     }
 
     get mtime(): Date | undefined {
-        return this.singularNullable(POSIX.mtime, ValueMappings.literalToDate)
+        return this.singularNullable(POSIX.mtime, LiteralAs.date)
     }
 
     get lastModified(): Date | undefined {
@@ -44,11 +44,11 @@ export class Resource extends TermWrapper {
     }
 
     get size(): number | undefined {
-        return this.singularNullable(POSIX.size, ValueMappings.literalToNumber)
+        return this.singularNullable(POSIX.size, LiteralAs.number)
     }
 
     get type(): Set<string> {
-        return this.objects(RDF.type, ValueMappings.iriToString, TermMappings.stringToIri)
+        return this.objects(RDF.type, NamedNodeAs.string, NamedNodeFrom.string)
     }
 
     get mimeType(): string | undefined {
