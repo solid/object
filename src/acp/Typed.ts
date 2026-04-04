@@ -1,8 +1,8 @@
-import { TermMappings, ValueMappings, TermWrapper } from "rdfjs-wrapper"
+import { TermWrapper, NamedNodeAs, NamedNodeFrom } from "@rdfjs/wrapper"
 import { RDF } from "../vocabulary/mod.js"
 
 export class Typed extends TermWrapper {
     get type(): Set<string> {
-        return this.objects(RDF.type, ValueMappings.iriToString, TermMappings.stringToIri)
+        return this.objects(RDF.type, NamedNodeAs.string, NamedNodeFrom.string)
     }
 }

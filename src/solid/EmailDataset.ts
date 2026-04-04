@@ -1,4 +1,4 @@
-import { DatasetWrapper } from 'rdfjs-wrapper';
+import { DatasetWrapper } from '@rdfjs/wrapper';
 import { VCARD } from '../vocabulary/mod.js';
 import { Email } from './Email.js';
 

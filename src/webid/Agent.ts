@@ -1,25 +1,25 @@
-import { TermMappings, ValueMappings, TermWrapper } from "rdfjs-wrapper"
+import { TermWrapper, LiteralAs, NamedNodeAs, NamedNodeFrom, TermAs } from "@rdfjs/wrapper"
 import { FOAF, PIM, SOLID, VCARD } from "../vocabulary/mod.js"
 
 export class Agent extends TermWrapper {
     get vcardFn(): string | undefined {
-        return this.singularNullable(VCARD.fn, ValueMappings.literalToString)
+        return this.singularNullable(VCARD.fn, LiteralAs.string)
     }
 
     get vcardHasUrl(): string | undefined {
-        return this.singularNullable(VCARD.hasUrl, ValueMappings.iriToString)
+        return this.singularNullable(VCARD.hasUrl, NamedNodeAs.string)
     }
 
     get organization(): string | null {
-        return this.singularNullable(VCARD.organizationName, ValueMappings.iriToString) ?? null
+        return this.singularNullable(VCARD.organizationName, NamedNodeAs.string) ?? null
     }
 
     get role(): string | null {
-        return this.singularNullable(VCARD.role, ValueMappings.iriToString) ?? null
+        return this.singularNullable(VCARD.role, NamedNodeAs.string) ?? null
     }
 
     get title(): string | null {
-        return this.singularNullable(VCARD.title, ValueMappings.literalToString) ?? null
+        return this.singularNullable(VCARD.title, LiteralAs.string) ?? null
     }
 
     get phone(): string | null {
@@ -27,15 +27,15 @@ export class Agent extends TermWrapper {
     }
 
     get hasTelephone(): HasValue | undefined {
-        return this.singularNullable(VCARD.hasTelephone, TermWrapper.as(HasValue))
+        return this.singularNullable(VCARD.hasTelephone, TermAs.instance(HasValue))
     }
 
     get foafName(): string | undefined {
-        return this.singularNullable(FOAF.name, ValueMappings.literalToString)
+        return this.singularNullable(FOAF.name, LiteralAs.string)
     }
 
     get name(): string | null {
-        return this.vcardFn ?? this.foafName ?? this.term.value.split("/").pop()?.split("#")[0] ?? null
+        return this.vcardFn ?? this.foafName ?? this.value.split("/").pop()?.split("#")[0] ?? null
     }
 
     get storageUrls(): Set<string> {
@@ -44,7 +44,7 @@ export class Agent extends TermWrapper {
     }
 
     get foafHomepage(): string | undefined {
-        return this.singularNullable(FOAF.homepage, ValueMappings.literalToString)
+        return this.singularNullable(FOAF.homepage, LiteralAs.string)
     }
 
     get website(): string | null {
@@ -52,15 +52,15 @@ export class Agent extends TermWrapper {
     }
 
     get photoUrl(): string | null {
-        return this.singularNullable(VCARD.hasPhoto, ValueMappings.literalToString) ?? null
+        return this.singularNullable(VCARD.hasPhoto, LiteralAs.string) ?? null
     }
 
     get pimStorage(): Set<string> {
-        return this.objects(PIM.storage, ValueMappings.iriToString, TermMappings.stringToIri)
+        return this.objects(PIM.storage, NamedNodeAs.string, NamedNodeFrom.string)
     }
 
     get solidStorage(): Set<string> {
-        return this.objects(SOLID.storage, ValueMappings.iriToString, TermMappings.stringToIri)
+        return this.objects(SOLID.storage, NamedNodeAs.string, NamedNodeFrom.string)
     }
 
     get email(): string | null {
@@ -68,20 +68,20 @@ export class Agent extends TermWrapper {
     }
 
     get hasEmail(): HasValue | undefined {
-        return this.singularNullable(VCARD.hasEmail, TermWrapper.as(HasValue))
+        return this.singularNullable(VCARD.hasEmail, TermAs.instance(HasValue))
     }
 
     get knows(): Set<string> {
-        return this.objects(FOAF.knows, ValueMappings.iriToString, TermMappings.stringToIri)
+        return this.objects(FOAF.knows, NamedNodeAs.string, NamedNodeFrom.string)
     }
 }
 
 class HasValue extends TermWrapper {
-    get value(): string {
-        return this.hasValue ?? this.term.value
+    override get value(): string {
+        return this.hasValue ?? super.value
     }
 
     get hasValue(): string | undefined {
-        return this.singularNullable(VCARD.hasValue, ValueMappings.iriToString)
+        return this.singularNullable(VCARD.hasValue, NamedNodeAs.string)
     }
 }
