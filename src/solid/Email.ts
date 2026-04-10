@@ -1,20 +1,30 @@
-import { TermWrapper, LiteralAs, LiteralFrom, NamedNodeAs, NamedNodeFrom } from '@rdfjs/wrapper';
-import { VCARD, RDF } from '../vocabulary/mod.js';
+import {
+    LiteralAs,
+    LiteralFrom,
+    NamedNodeAs,
+    NamedNodeFrom,
+    OptionalAs,
+    OptionalFrom,
+    RequiredAs,
+    RequiredFrom,
+    TermWrapper
+} from '@rdfjs/wrapper';
+import { RDF, VCARD } from '../vocabulary/mod.js';
 
 export class Email extends TermWrapper {
   get emailAddress(): string {
-    return this.singular(VCARD.value, LiteralAs.string);
+    return RequiredFrom.subjectPredicate(this, VCARD.value, LiteralAs.string);
   }
 
   set emailAddress(value: string) {
-    this.overwrite(VCARD.value, value, LiteralFrom.string);
+    RequiredAs.object(this, VCARD.value, value, LiteralFrom.string);
   }
 
   get emailType(): string | undefined {
-    return this.singularNullable(RDF.type, NamedNodeAs.string);
+    return OptionalFrom.subjectPredicate(this, RDF.type, NamedNodeAs.string);
   }
 
   set emailType(value: string | undefined) {
-    this.overwriteNullable(RDF.type, value, NamedNodeFrom.string);
+    OptionalAs.object(this, RDF.type, value, NamedNodeFrom.string);
   }
 }
