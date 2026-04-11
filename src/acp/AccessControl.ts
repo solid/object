@@ -1,10 +1,10 @@
-import { TermAs, TermFrom } from "@rdfjs/wrapper"
+import { SetFrom, TermAs, TermFrom } from "@rdfjs/wrapper"
 import { Policy } from "./Policy.js"
 import { ACP } from "../vocabulary/mod.js"
 import { Typed } from "./Typed.js";
 
 export class AccessControl extends Typed {
     get apply(): Set<Policy> {
-        return this.objects(ACP.apply, TermAs.instance(Policy), TermFrom.instance)
+        return SetFrom.subjectPredicate(this, ACP.apply, TermAs.instance(Policy), TermFrom.instance)
     }
 }
