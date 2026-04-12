@@ -3,6 +3,7 @@ export const VCARD = {
   Email: "http://www.w3.org/2006/vcard/ns#Email",
   email: "http://www.w3.org/2006/vcard/ns#email",
   hasEmail: "http://www.w3.org/2006/vcard/ns#hasEmail",
+  hasMember: "http://www.w3.org/2006/vcard/ns#hasMember",
   hasValue: "http://www.w3.org/2006/vcard/ns#hasValue",
   hasPhoto: "http://www.w3.org/2006/vcard/ns#hasPhoto",
   tel: "http://www.w3.org/2006/vcard/ns#tel",
