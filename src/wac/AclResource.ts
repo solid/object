@@ -7,7 +7,7 @@ import { ACL } from "../vocabulary/mod.js"
  *
  * @see https://solidproject.org/TR/wac#acl-resource-representation
  */
-class AclResource extends DatasetWrapper {
+export class AclResource extends DatasetWrapper {
     /**
      * Gets all authorizations from the ACL Resource.
      *
