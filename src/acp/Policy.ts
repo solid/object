@@ -8,11 +8,19 @@ export class Policy extends Typed {
         return SetFrom.subjectPredicate(this, ACP.allow, NamedNodeAs.string, NamedNodeFrom.string)
     }
 
+    get deny(): Set<string> {
+        return SetFrom.subjectPredicate(this, ACP.deny, NamedNodeAs.string, NamedNodeFrom.string)
+    }
+
     get anyOf(): Set<Matcher> {
         return SetFrom.subjectPredicate(this, ACP.anyOf, TermAs.instance(Matcher), TermFrom.instance)
     }
 
     get allOf(): Set<Matcher> {
         return SetFrom.subjectPredicate(this, ACP.allOf, TermAs.instance(Matcher), TermFrom.instance)
+    }
+
+    get noneOf(): Set<Matcher> {
+        return SetFrom.subjectPredicate(this, ACP.noneOf, TermAs.instance(Matcher), TermFrom.instance)
     }
 }
