@@ -8,11 +8,15 @@ export class AccessControlResource extends Typed {
         return SetFrom.subjectPredicate(this, ACP.accessControl, TermAs.instance(AccessControl), TermFrom.instance)
     }
 
+    get memberAccessControl(): Set<AccessControl> {
+        return SetFrom.subjectPredicate(this, ACP.memberAccessControl, TermAs.instance(AccessControl), TermFrom.instance)
+    }
+
     get resource(): string | undefined {
         return OptionalFrom.subjectPredicate(this, ACP.resource, NamedNodeAs.string)
     }
 
-    set resource(v: string) {
+    set resource(v: string | undefined) {
         OptionalAs.object(this, ACP.resource, v, NamedNodeFrom.string)
     }
 }
