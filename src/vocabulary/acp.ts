@@ -7,6 +7,7 @@ export const ACP = {
   agent: "http://www.w3.org/ns/solid/acp#agent",
   allow: "http://www.w3.org/ns/solid/acp#allow",
   anyOf: "http://www.w3.org/ns/solid/acp#anyOf",
+  allOf: "http://www.w3.org/ns/solid/acp#allOf",
   apply: "http://www.w3.org/ns/solid/acp#apply",
   memberAccessControl: "http://www.w3.org/ns/solid/acp#memberAccessControl",
   mode: "http://www.w3.org/ns/solid/acp#mode",

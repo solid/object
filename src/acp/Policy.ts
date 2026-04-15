@@ -11,4 +11,8 @@ export class Policy extends Typed {
     get anyOf(): Set<Matcher> {
         return SetFrom.subjectPredicate(this, ACP.anyOf, TermAs.instance(Matcher), TermFrom.instance)
     }
+
+    get allOf(): Set<Matcher> {
+        return SetFrom.subjectPredicate(this, ACP.allOf, TermAs.instance(Matcher), TermFrom.instance)
+    }
 }
