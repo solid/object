@@ -149,7 +149,17 @@ Wraps a vCard `Tel` value object — the subject of `vcard:hasTelephone` /
 | Property | Type | Predicate |
 | --- | --- | --- |
 | `phoneNumber` | `string` (read/write) | [`vcard:hasValue`](https://www.w3.org/TR/vcard-rdf/#hasValue) — throws if absent on read. |
-| `phoneType` | `string \| undefined` (read/write) | `vcard:TelephoneType` |
+| `phoneType` | `string \| undefined` (read/write) | `vcard:TelephoneType` ([known mismatch](#known-issues): the IRI used by the wrapper is a vCard *class*, not a predicate; the corresponding `Email.emailType` getter uses `rdf:type`). |
+
+### Known issues
+
+- `Telephone.phoneType` reads and writes triples whose predicate IRI is
+  `http://www.w3.org/2006/vcard/ns#TelephoneType`, but in the
+  [vCard ontology](https://www.w3.org/TR/vcard-rdf/) `vcard:TelephoneType`
+  is a class, not a predicate. The canonical predicate is `rdf:type`
+  (which is what `Email.emailType` uses). Treat `phoneType` as a
+  `@solid/object`-internal convention until the upstream fixes the
+  predicate.
 
 ## `TelephoneDataset`
 

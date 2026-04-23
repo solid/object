@@ -35,13 +35,12 @@ new WebIdDataset(dataset, factory)
 | --- | --- | --- |
 | `mainSubject` | [`Agent`](#agent) \| `undefined` | The first subject in the dataset that has a [`solid:oidcIssuer`](https://solid.github.io/solid-oidc/#discovery) predicate, wrapped as an `Agent`. Returns `undefined` for documents that don't contain an OIDC issuer triple. |
 
-> The current heuristic identifies the WebID by looking for an
-> `solid:oidcIssuer` triple. The library author has flagged this as
-> incomplete (see the `TODO` in
-> [`src/webid/WebIdDataset.ts`](../../src/webid/WebIdDataset.ts)) — a
+> The current heuristic identifies the WebID by looking for a
+> `solid:oidcIssuer` triple, so profile documents that omit one will
+> return `undefined`. A
 > [`foaf:primaryTopic`](http://xmlns.com/foaf/spec/#term_primaryTopic)
 > / [`foaf:isPrimaryTopicOf`](http://xmlns.com/foaf/spec/#term_isPrimaryTopicOf)
-> based path is planned.
+> based fallback is planned upstream.
 
 ### Example
 
@@ -95,10 +94,10 @@ the underlying dataset.
 | `organization` | `string \| null` | [`vcard:organization-name`](https://www.w3.org/TR/vcard-rdf/) | vCard |
 | `role` | `string \| null` | [`vcard:role`](https://www.w3.org/TR/vcard-rdf/) | vCard |
 | `title` | `string \| null` | [`vcard:title`](https://www.w3.org/TR/vcard-rdf/) | vCard |
-| `email` | `string \| null` | Convenience: `hasEmail.value`. | vCard |
-| `hasEmail` | `HasValue \| undefined` | [`vcard:hasEmail`](https://www.w3.org/TR/vcard-rdf/#hasEmail). The wrapper resolves `vcard:hasValue` if present (e.g. `mailto:alice@example`). | vCard |
-| `phone` | `string \| null` | Convenience: `hasTelephone.value`. | vCard |
-| `hasTelephone` | `HasValue \| undefined` | [`vcard:hasTelephone`](https://www.w3.org/TR/vcard-rdf/#hasTelephone). | vCard |
+| `email` | `string \| null` | Convenience: `hasEmail?.value`. | vCard |
+| `hasEmail` | term wrapper \| `undefined` | [`vcard:hasEmail`](https://www.w3.org/TR/vcard-rdf/#hasEmail). Returns an opaque term wrapper with a `.value: string` getter that resolves `vcard:hasValue` if present (e.g. `mailto:alice@example`), otherwise the wrapped term's IRI. | vCard |
+| `phone` | `string \| null` | Convenience: `hasTelephone?.value`. | vCard |
+| `hasTelephone` | term wrapper \| `undefined` | [`vcard:hasTelephone`](https://www.w3.org/TR/vcard-rdf/#hasTelephone). Same opaque shape as `hasEmail`. | vCard |
 | `website` | `string \| null` | Computed: `vcardHasUrl` -> `foafHomepage`. | vCard / FOAF |
 | `vcardHasUrl` | `string \| undefined` | [`vcard:hasURL`](https://www.w3.org/TR/vcard-rdf/) | vCard |
 | `foafHomepage` | `string \| undefined` | [`foaf:homepage`](http://xmlns.com/foaf/spec/#term_homepage) | FOAF |

@@ -73,15 +73,24 @@ for (const auth of resource.authorizations) {
 ```
 
 Translate a WAC authorisation into an ACP policy graph (best effort — see
-caveats on the conversion docs):
+caveats on the [conversion docs](docs/api/conversion.md)):
 
 ```ts
 import { DataFactory, Parser, Store } from "n3"
 import { AclResource, wacToAcp } from "@solid/object"
 
-const source = new AclResource(/* ... */ new Store(), DataFactory)
+const sourceStore = new Store()
+sourceStore.addQuads(new Parser().parse(`
+  @prefix acl: <http://www.w3.org/ns/auth/acl#> .
+  []  a acl:Authorization ;
+      acl:accessTo <https://example/data> ;
+      acl:default  <https://example/data> ;
+      acl:agent    <https://id.example/alice#me> ;
+      acl:mode     acl:Read, acl:Write .
+`))
+
 const target = new Store()
-wacToAcp(source, target)
+wacToAcp(new AclResource(sourceStore, DataFactory), target)
 ```
 
 ## Package layout

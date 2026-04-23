@@ -4,12 +4,12 @@
   "description": "RDF mapping classes for Solid: typed wrappers over RDF/JS datasets covering WebID profiles, Web Access Control (WAC) and Access Control Policy (ACP) resources, Solid containers and resources, vCard email/telephone objects, and the namespaced vocabulary constants those wrappers use.",
   "folders": [
     "docs",
-    "src"
+    "src",
+    "test"
   ],
   "excludeFolders": [
     "dist",
     "node_modules",
-    "test",
     ".github"
   ],
   "excludeFiles": [
