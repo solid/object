@@ -4,7 +4,7 @@ import { describe, it } from "node:test"
 
 import { Agent } from "@solid/object"
 
-describe("Agent oidcIssuers", () => {
+describe("Agent oidcIssuer", () => {
 
     const sampleRDF = `
 @prefix solid: <http://www.w3.org/ns/solid/terms#> .
