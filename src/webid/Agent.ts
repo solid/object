@@ -63,6 +63,10 @@ export class Agent extends TermWrapper {
         return SetFrom.subjectPredicate(this, SOLID.storage, NamedNodeAs.string, NamedNodeFrom.string)
     }
 
+    get oidcIssuer(): Set<string> {
+        return SetFrom.subjectPredicate(this, SOLID.oidcIssuer, NamedNodeAs.string, NamedNodeFrom.string)
+    }
+
     get email(): string | null {
         return this.hasEmail?.value ?? null
     }
