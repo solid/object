@@ -26,7 +26,7 @@ describe("Agent oidcIssuers", () => {
         )
 
         assert.deepStrictEqual(
-            new Set(agent.oidcIssuers),
+            new Set(agent.oidcIssuer),
             new Set(["https://idp.example.org/", "https://idp.other.example/"])
         )
     })
