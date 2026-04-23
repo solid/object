@@ -89,7 +89,7 @@ the underlying dataset.
 
 | Property | Type | Predicate | Spec |
 | --- | --- | --- | --- |
-| `name` | `string \| null` | Computed: `vcard:fn` -> `foaf:name` -> the last URL path segment. | [vCard](https://www.w3.org/TR/vcard-rdf/), [FOAF](http://xmlns.com/foaf/spec/#term_name) |
+| `name` | `string \| null` | Computed: `vcard:fn` -> `foaf:name` -> the last URL path segment of the WebID IRI with any trailing `#fragment` removed. | [vCard](https://www.w3.org/TR/vcard-rdf/), [FOAF](http://xmlns.com/foaf/spec/#term_name) |
 | `vcardFn` | `string \| undefined` | [`vcard:fn`](https://www.w3.org/TR/vcard-rdf/#fn) | vCard "formatted name" |
 | `foafName` | `string \| undefined` | [`foaf:name`](http://xmlns.com/foaf/spec/#term_name) | FOAF |
 | `organization` | `string \| null` | [`vcard:organization-name`](https://www.w3.org/TR/vcard-rdf/) | vCard |

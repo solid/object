@@ -48,7 +48,7 @@ new Resource(term, dataset, factory)
 | `lastModified` | `Date \| undefined` | Computed: `modified` -> `mtime`. | |
 | `size` | `number \| undefined` | [`posix:size`](http://www.w3.org/ns/posix/stat#size) | |
 | `type` | `Set<string>` | `rdf:type` | Mutable set. |
-| `mimeType` | `string \| undefined` | First member of `type` matching `http://www.w3.org/ns/iana/media-types/.../#Resource`. | The IANA media-type vocabulary used by some Solid servers. |
+| `mimeType` | `string \| undefined` | First member of `type` matching `http://www.w3.org/ns/iana/media-types/.../#Resource`. | The full IANA-vocabulary class IRI is returned, not the bare media-type string — extract the media type yourself if you need `image/png` rather than `http://www.w3.org/ns/iana/media-types/image/png#Resource`. |
 
 `toString()` returns `id`.
 

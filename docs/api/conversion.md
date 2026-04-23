@@ -37,14 +37,27 @@ For each `Authorization`:
 - `acl:default` becomes an `acp:AccessControlResource` with an
   `acp:memberAccessControl` chain.
 - Each `acl:mode` is added to the resulting `acp:Policy`'s `acp:allow`.
-- Each `acl:agent`, expanded `acl:agentGroup` member, and the
-  `foaf:Agent` / `acl:AuthenticatedAgent` agent classes is added to a
-  single `acp:allOf` `acp:Matcher`. `foaf:Agent` maps to
-  `acp:PublicAgent`; `acl:AuthenticatedAgent` maps to `acp:AuthenticatedAgent`.
+- Each `acl:agent` IRI and each `acl:agentGroup` member (`vcard:hasMember`)
+  is added to a single `acp:allOf` `acp:Matcher`. If an `acl:agent` IRI
+  happens to be `foaf:Agent` it is rewritten to `acp:PublicAgent`; if it
+  is `acl:AuthenticatedAgent` it is rewritten to `acp:AuthenticatedAgent`.
 
 Throws [`WacToAcpError`](#wactoacperror) when the authorisation includes:
 
 - `acl:origin` (no equivalent in ACP).
+
+### Caveats
+
+- **`acl:agentClass` is not currently translated.** `acl:agentClass`
+  values (the canonical predicate for `foaf:Agent` "everyone" and
+  `acl:AuthenticatedAgent` "any signed-in agent" subjects, per
+  [WAC §5](https://solidproject.org/TR/wac#access-subjects)) are not
+  iterated by the converter and are silently dropped. WAC documents that
+  express public or authenticated access through `acl:agentClass` will
+  produce an ACP graph with no matching `acp:Matcher` for those
+  categories. The mapping above only fires when those same IRIs appear
+  as `acl:agent` values (which the test fixture happens to use). Track
+  in the upstream issue tracker if this matters for your use case.
 
 ## `acpToWac(source, target)`
 
