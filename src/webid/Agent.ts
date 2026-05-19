@@ -81,10 +81,6 @@ export class Agent extends TermWrapper {
 }
 
 class HasValue extends TermWrapper {
-    override get value(): string {
-        return this.hasValue ?? super.value
-    }
-
     get hasValue(): string | undefined {
         return OptionalFrom.subjectPredicate(this, VCARD.hasValue, NamedNodeAs.string)
     }
