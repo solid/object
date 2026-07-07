@@ -125,7 +125,7 @@ export class Authorization extends TermWrapper {
             return false
         }
 
-        if (this.accessTo === undefined || this.default === undefined) {
+        if (this.accessTo === undefined && this.default === undefined) {
             return false
         }
 
