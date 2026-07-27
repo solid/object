@@ -3,10 +3,19 @@ import { Container } from "./Container.js"
 import { LDP } from "../vocabulary/mod.js"
 
 export class ContainerDataset extends DatasetWrapper {
-    // TODO: Consider that this might be undefined if there are no contained resources. We might need different matching.
+
     get container(): Container | undefined {
-        // Return the first container in the dataset
+        // Non-empty containers advertise children via ldp:contains.
         for (const s of this.subjectsOf(LDP.contains, Container)) {
+            return s
+        }
+
+        // Empty containers have no ldp:contains; resolving via rdf:type instead.
+        for (const s of this.instancesOf(LDP.Container, Container)) {
+            return s
+        }
+
+        for (const s of this.instancesOf(LDP.BasicContainer, Container)) {
             return s
         }
 
