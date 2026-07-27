@@ -10,7 +10,9 @@ export class ContainerDataset extends DatasetWrapper {
             return s
         }
 
-        // Empty containers have no ldp:contains; resolving via rdf:type instead.
+        // If the container is empty, then the only instance of `ldp:Container`
+        // and `ldp:BasicContainer` in this dataset should be the container
+        // itself.
         for (const s of this.instancesOf(LDP.Container, Container)) {
             return s
         }
