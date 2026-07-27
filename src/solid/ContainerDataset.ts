@@ -5,7 +5,7 @@ import { LDP } from "../vocabulary/mod.js"
 export class ContainerDataset extends DatasetWrapper {
 
     get container(): Container | undefined {
-        // Non-empty containers advertise children via ldp:contains.
+        // Return the first container in the dataset
         for (const s of this.subjectsOf(LDP.contains, Container)) {
             return s
         }
