@@ -9,7 +9,8 @@
     ".": "./dist/mod.js",
     "./acp": "./dist/acp/mod.js",
     "./solid": "./dist/solid/mod.js",
-    "./webid": "./dist/webid/mod.js"
+    "./webid": "./dist/webid/mod.js",
+    "./vocabulary": "./dist/vocabulary/mod.js"
   },
   "files": [
     "dist"
